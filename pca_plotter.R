@@ -52,7 +52,12 @@ pca_plotter <- function(transformed_data, sample_map,leg_row_num=3, gene_num=Inf
   
   # And here comes the plot!
   plt1 <- ggplot(data=plot_data,
-                 aes(x=pc1, y=pc2, fill=group, colour=group, shape=group)) + 
+                 aes(x=pc1,
+                     y=pc2,
+                     fill=group,
+                     colour=group, 
+                     shape=group,
+                     label=row.names(plot_data))) + 
     # The geom point aes specificies colouring by group
     # and changes point shape by group as well
     # geom_point(size = 2.5, 
@@ -109,7 +114,7 @@ pca_plotter <- function(transformed_data, sample_map,leg_row_num=3, gene_num=Inf
   #   plt2 <- plt2 + guides(col=guide_legend(nrow = 2))
   # }
   
-  plt2 <- plt2 + guides(col=guide_legend(nrow = leg_row_num))
+  plt2 <- plt2 + guides(col=guide_legend(nrow = leg_row_num)) #+ geom_text(position = 'jitter')
 
   return(plt2)
 }
