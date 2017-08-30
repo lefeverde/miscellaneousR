@@ -21,7 +21,7 @@ pretty_bar_chart <- function(xvar,
   
   # Caclulates the breaks for the Y axis so all plots are same
   y_break_point <- pretty(c(min(yvar)*1.05, max(yvar)*1.05), n=7)
-  return(data_frame)
+  
   # So this loop breaks up into groups, gets the top genes
   # and puts that all into one data frame which is run through
   # ggplot and the grob object is added to a list (plot_list).
@@ -53,11 +53,14 @@ pretty_bar_chart <- function(xvar,
                                                   colour="black"),
                          axis.text.x=element_text(size=rel(.75),
                                                   angle = 90,
+                                                  vjust = .5,
                                                   colour="black"
                                                   ),
+                        
                          axis.title.x=element_text(size=rel(.75),
                                                    colour="black"),
-                         plot.title = element_text(hjust = 0.5))
+                         plot.title = element_text(hjust = 0.5)
+                         )
     
     plt3 <- plt2 + facet_wrap(~ groups) + theme(legend.position = 'none',
                                                 strip.text=element_text(size=rel(1.75)),
