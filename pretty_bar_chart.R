@@ -78,7 +78,7 @@ pretty_bar_chart <- function(xvar,
     #return(plot_dat)
     
   }
-  return(plot_list)
+  #return(plot_list)
   grid_title <- textGrob(paste0(plot_title, '\nTop ', gene_num, ' Up/Down Regulated Genes'),
                          gp = gpar(fontface = "bold", cex = 1.5))
   grid_object <- grid.arrange(do.call(rbind.gtable,plot_list),top=grid_title)
