@@ -17,7 +17,7 @@ volcano_plotter2 <- function(plot_data,
                      label=gene_name,
                      colour=factor(fill_fact))) +
     scale_colour_manual(values=c('black', '#e31a1c')) + 
-    theme_minimal() +
+    theme_bw() +
     #geom_jitter() +
     geom_point(size=.025) +
     geom_hline(yintercept = 1.30103, colour='#1f78b4', size=rel(.75), linetype='dashed') + 
@@ -28,8 +28,8 @@ volcano_plotter2 <- function(plot_data,
 
   plt2 <- plt1  + theme(plot.margin = unit(c(1,1,1,1), "cm"),
                         panel.background = element_blank(),
-                        panel.grid.major = element_blank(), 
-                        panel.grid.minor=element_blank(), 
+                        #panel.grid.major = element_blank(), 
+                        #panel.grid.minor=element_blank(), 
                         axis.title.y=element_text(size=rel(1.25), 
                                                   #vjust=1.25, 
                                                   #hjust=.25, 
