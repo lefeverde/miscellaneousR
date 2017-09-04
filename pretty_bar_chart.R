@@ -12,7 +12,7 @@ pretty_bar_chart <- function(xvar,
   library(gtable)
   
   
-  ## Function to make pretty top howevever many up/down regulated
+  ## Function to make pretty top however many up/down regulated
   ## genes. 
   
   # Put data into df and give it a colour.

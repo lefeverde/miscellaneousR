@@ -1,5 +1,7 @@
-volcano_plotter2 <- function(plot_data,
-                            plot_labels=TRUE
+volcano_plotter2 <- function(plot_data, 
+                             plot_labels=TRUE,
+                             label_num=35
+                            
                          #x_var,
                          #y_var,
                          ){
@@ -57,7 +59,15 @@ volcano_plotter2 <- function(plot_data,
                       y='-Log10 FDR p-value',
                       title=plot_title) 
   if(plot_labels){
-    top_genes <- plot_data[order( plot_data$padj, -abs(plot_data$log2FoldChange)),][1:50,]
+    #top_genes <- plot_data[order( plot_data$padj, -abs(plot_data$log2FoldChange)),][1:50,]
+    # Breaks genes into negative and positive log2fc 
+    # This is so both pos/neg sides of volc get annots
+    neg_genes <- plot_data[plot_data$log2FoldChange < 0,]
+    neg_genes <- neg_genes[order(neg_genes$padj, -abs(neg_genes$log2FoldChange)),][1:label_num,]
+    # same as above except for the pos genes
+    pos_genes <- plot_data[plot_data$log2FoldChange > 0,]
+    pos_genes <- pos_genes[order(pos_genes$padj, -abs(pos_genes$log2FoldChange)),][1:label_num,]
+    top_genes <- rbind(neg_genes, pos_genes)
     plt3 <- plt3 + geom_text_repel(data=top_genes,
                                    aes(x=log2FoldChange,
                                        y=-log10(padj),

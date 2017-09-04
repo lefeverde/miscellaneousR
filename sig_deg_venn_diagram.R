@@ -33,6 +33,6 @@ sig_deg_venn_diagram <- function(long_table,
                      ext.text = FALSE, 
                      margin = .1,
                      cex=.75,
-                     cat.dist = c(.075,.075))
+                     cat.dist = c(-.4,.075))
   #return(gene_list)
 }
