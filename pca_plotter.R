@@ -69,14 +69,14 @@ pca_plotter <- function(transformed_data, sample_map,leg_row_num=3, gene_num=Inf
     stat_ellipse(alpha=.15, geom = "polygon") +
     scale_colour_brewer(palette="Set1") +
     scale_fill_brewer(palette="Set1") +
-    labs(x=axlab.1, y=axlab.2)
+    labs(x=axlab.1, y=axlab.2) + theme_bw()
   
   # This all just setting the themes the way I like it
   
   plt2 <- plt1 + theme(plot.margin = unit(c(1,1,1,1), "cm"),
                        panel.background = element_blank(),
-                       panel.grid.major = element_blank(), 
-                       panel.grid.minor=element_blank(), 
+                       #panel.grid.major = element_blank(), 
+                       #panel.grid.minor=element_blank(), 
                        axis.title.y=element_text(size=rel(1.75), 
                                                  #vjust=1.25, 
                                                  #hjust=.25, 
