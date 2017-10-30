@@ -75,16 +75,14 @@ pca_plotter <- function(transformed_data, sample_map,leg_row_num=3, gene_num=Inf
   
   plt2 <- plt1 + theme(plot.margin = unit(c(1,1,1,1), "cm"),
                        panel.background = element_blank(),
-                       #panel.grid.major = element_blank(), 
-                       #panel.grid.minor=element_blank(), 
                        axis.title.y=element_text(size=rel(1.75), 
-                                                 #vjust=1.25, 
-                                                 #hjust=.25, 
+                                                 
+                                                 
                                                  face="bold",
                                                  margin=margin(0,7.5,0,0)),
                        axis.title.x=element_text(size=rel(1.75), 
-                                                 #vjust=-.5,
-                                                 #hjust=.25, 
+                                                
+                                                
                                                  face="bold",
                                                  margin=margin(7.5,0,0,0)),
                        axis.text.y=element_text(size=rel(1.5),
@@ -113,7 +111,10 @@ pca_plotter <- function(transformed_data, sample_map,leg_row_num=3, gene_num=Inf
   # if(length(levels(factor(plot_data$group))) > 3){
   #   plt2 <- plt2 + guides(col=guide_legend(nrow = 2))
   # }
-  
+  group_num <- length(levels(factor(plot_data$group)))
+  if (group_num > 6){
+    plt2 <- plt2 + scale_shape_manual(values = seq(1,group_num))
+  }
   plt2 <- plt2 + guides(col=guide_legend(nrow = leg_row_num)) #+ geom_text(position = 'jitter')
 
   return(plt2)
